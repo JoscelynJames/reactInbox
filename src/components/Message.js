@@ -28,9 +28,17 @@ class Message extends React.Component {
 		if (email.selected === true) {
 			return 'selected'
 		}
+	};
+
+	getLabels(labels) {
+		return (
+			<span>
+				<span className="label label-warning">{labels[0]}</span>
+		  	<span className="label label-warning">{labels[1]}</span>
+			</span>
+		)	
 	}
 
-	// uread messge
 	render () {
 		return (
 			this.props.emails.map((email) => {
@@ -47,6 +55,7 @@ class Message extends React.Component {
 							</div>
 						</div>
 						<div className="col-xs-11" >
+							{this.getLabels(email.labels)}
 							<a href="#">
 								{email.subject}
 							</a>
