@@ -37,7 +37,15 @@ class Message extends React.Component {
 		  	<span className="label label-warning">{labels[1]}</span>
 			</span>
 		)	
-	}
+	};
+
+	getStarStatus(email) {
+		if (email.starred === true) {
+			return 'star fa fa-star-o';
+		} else {
+			return 'star fa fa-star';
+		}
+	};
 
 	render () {
 		return (
@@ -50,7 +58,7 @@ class Message extends React.Component {
 									<input type="checkbox" checked={this.getCheckStatus(email)}/>
 								</div>
 								<div className="col-xs-2">
-									<i className="star fa fa-star"></i>
+									<i className={this.getStarStatus(email)}></i>
 								</div>
 							</div>
 						</div>
