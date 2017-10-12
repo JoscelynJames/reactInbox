@@ -4,10 +4,9 @@ class Message extends React.Component {
 	constructor(props) {
 		super(props)
 
-		this.state = { 
-			read: '',
+		this.state = { }
 
-		}
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	getReadStatus(email) {
@@ -20,8 +19,10 @@ class Message extends React.Component {
 
 	getCheckStatus(email) {
 		if (email.selected === true) {
-			return 'checked';
-		} 
+			return true;
+		} else {
+			return false;
+		}
 	};
 
 	getSelectStatus(email) {
@@ -41,10 +42,22 @@ class Message extends React.Component {
 
 	getStarStatus(email) {
 		if (email.starred === true) {
-			return 'star fa fa-star-o';
-		} else {
 			return 'star fa fa-star';
+		} else {
+			return 'star fa fa-star-o';
 		}
+	};
+
+	handleClick(e , email) {
+		e.preventDefault();
+
+		if (email.starred === true) {
+			email.starred = false;
+	 	} else {
+			email.starred = true;
+		}
+
+		this.setState({});
 	};
 
 	render () {
@@ -55,9 +68,9 @@ class Message extends React.Component {
 						<div className="col-xs-1">
 							<div className="row">
 								<div className="col-xs-2">
-									<input type="checkbox" checked={this.getCheckStatus(email)}/>
+									<input type="checkbox" onChange={() => this.getCheckStatus(email)}/>
 								</div>
-								<div className="col-xs-2">
+								<div onClick={(e) => this.handleClick(e, email)} className="col-xs-2">
 									<i className={this.getStarStatus(email)}></i>
 								</div>
 							</div>
