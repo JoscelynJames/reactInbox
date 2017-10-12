@@ -4,12 +4,14 @@ class Message extends React.Component {
 	constructor(props) {
 		super(props)
 
-		this.state = { 
-			  
-		}
+		this.state = { }
 
 		this.handleClick = this.handleClick.bind(this);
 	}
+
+	componentWillUpdate() {
+		this.getSelectStatus
+	};
 
 	getReadStatus(email) {
 		if (email.read === true) { 
@@ -26,36 +28,28 @@ class Message extends React.Component {
 	};
 
 	getSelectStatus(email) {
-		console.log('merp')
 		if (email.selected === true) {
 			return 'selected';
 		} else {
 			email.selected = false;
 			return ''
 		}
-		this.setState({})
 	};
 
 	updateSelect(email) {
-		console.log(email.id)
-		let id = email.id
 		if (email.selected === false) {
-			email.selected = true;
-			console.log(email)
+			return email.selected = true;
 		} else {
-			email.selected = false;
-			console.log(email)
-		}
-		this.setState({ id: email.selected })
-	}
+			return email.selected = false;
+		};
+	};
 
 	getLabels(labels) {
-		return (
-			<span>
-				<span className="label label-warning">{labels[0]}</span>
-		  	<span className="label label-warning">{labels[1]}</span>
-			</span>
-		)	
+		return labels.map((label) => {
+			return (
+				<span className="label label-warning" key={label}>{label}</span>
+			)
+		})
 	};
 
 	getStarStatus(email) {
@@ -63,7 +57,7 @@ class Message extends React.Component {
 			return 'star fa fa-star';
 		} else {
 			return 'star fa fa-star-o';
-		}
+		};
 	};
 
 	handleClick(e , email) {
@@ -74,7 +68,6 @@ class Message extends React.Component {
 	 	} else {
 			email.starred = true;
 		}
-		// had to use this to update* or fun render() again to update. It just refreshes the state but dosent set it to anything 
 		this.setState({});
 	};
 
@@ -102,7 +95,8 @@ class Message extends React.Component {
 				</div>
 			)
 		})
-	)}
+	)};
+
 };
 
 
