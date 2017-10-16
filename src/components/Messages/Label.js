@@ -12,7 +12,7 @@ class Label extends React.Component {
 		return (
 			<div className="col-xs-11" >
 				{this.attachAllLabels()}
-				<a href="#">
+				<a>
 					{this.props.subject}
 				</a>
 			</div>

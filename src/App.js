@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Toolbar from './components/Toolbar'
-import Messages from './components/Messages'
+import Toolbar from './components/Toolbar/Toolbar';
+import Messages from './components/Messages/Messages';
 
 import emails from './data.js';
 
@@ -15,11 +15,12 @@ class App extends Component {
     };
     
   };
+
   render() {
     return (
       <div>
-        <Toolbar emails={ emails }/>
-        <Messages emails={ emails }/>
+        <Toolbar emails={ emails } />
+        <Messages emails={ emails } />
       </div>
     );
   };

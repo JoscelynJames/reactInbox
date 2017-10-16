@@ -20,7 +20,7 @@ const data = [
     "subject": "Use the 1080p HTTP feed, then you can parse the cross-platform hard drive!",
     "read": false,
     "starred": true,
-    "selected": false,
+    "selected": true,
     "labels": ["dev"]
   },
   {
@@ -36,7 +36,7 @@ const data = [
     "subject": "If we override the interface, we can get to the HTTP feed through the virtual EXE interface!",
     "read": false,
     "starred": false,
-    "selected": false,
+    "selected": true,
     "labels": ["personal"]
   },
   {
@@ -44,7 +44,7 @@ const data = [
     "subject": "We need to back up the wireless GB driver!",
     "read": true,
     "starred": true,
-    "selected": false,
+    "selected": true,
     "labels": []
   },
   {

@@ -1,25 +1,19 @@
 import React from 'react';
 
+
 class Toolbar extends React.Component {
 	constructor(props) {
 		super(props)
 
 		this.state = { 
-			checkboxStatus: '',
-		}
-	}
-
-	componentDidMount() {
-		let count = this.getCountOfCheckedBoxes();
-		
-	};
-
-	componentWillUpdate() {
-		this.checkAllBoxes()
+			allChecked: this.getCheckedResults,
+		};
 	};
 
 	render() {
 		return (
+<div>
+
 			<div className="row toolbar">
 			<div className="col-md-12">
 				<p className="pull-right">
@@ -31,8 +25,10 @@ class Toolbar extends React.Component {
 					<i className="fa fa-plus"></i>
 				</a>
 		
-				<button onClick={(e) => this.handleClick(e)} className="btn btn-default">
-					<i className={"fa " + this.state.checkboxStatus }></i>
+				<button className="btn btn-default">
+					{this.state.allChecked ?
+					<i className="fa fa-check-square-o"></i> : <i className="fa fa-minus-square-o"></i>}
+					{/* <i className="fa fa fa-square-o" ></i> */}
 				</button>
 		
 				<button className="btn btn-default">Mark As Read</button>
@@ -59,32 +55,8 @@ class Toolbar extends React.Component {
 			</div>
 		</div>
 
+</div>
 		)
-	};
-
-	handleClick(e) {
-		e.preventDefault();
-
-		if (this.state.checkboxStatus === 'fa fa-square-o' ) {
-			this.setState({ checkboxStatus: 'fa fa-check-square-o' })
-			this.checkAllBoxes();
-		} else {
-			this.setState({ checkboxStatus: 'fa fa-square-o' })
-		}
-	};
-
-	checkAllBoxes() {
-		console.log('merp')
-	}
-	
-	getCountOfCheckedBoxes() {	
-		let count = 0;
-		this.props.emails.filter((email) => {
-			if (email.selected === true) {
-				count++
-			} 
-		});
-		return count;
 	};
 
 }
